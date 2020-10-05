@@ -1,0 +1,44 @@
+*{
+    font-family: 'Lato', sans-serif;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+header {
+    text-align: center;
+    align-content: center;
+    color: white;
+    background-color: #021140 !important;
+    margin: auto !important;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.unitBtn {
+    float: right !important;
+    position: relative;
+    bottom: -40px; 
+    right: 10px; 
+    background-color: #BF1736;
+    border-width: 0px;
+}
+
+left {
+    background-color: #D8D8D8;
+}
+
+.searchBar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+card {
+    color: #010D26;
+    background-color: whitesmoke !important;
+}
+
+span {
+    opacity:.6;
+}
+
+jumbotron {
+    overflow: auto;
+}
