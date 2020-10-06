@@ -30,12 +30,31 @@ left {
     padding-bottom: 20px;
 }
 
+.todayDate {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.jumbotron {
+
+    padding-bottom: 0;
+    padding-top: 20px;
+    background-size: auto; 
+    height: 100%;
+    width: 100%;
+}
+
 card {
     color: #010D26;
     background-color: whitesmoke !important;
 }
 
-span {
+card-text {
+    font-size: xx-small;
+}
+
+.list-group-item {
     opacity:.6;
 }
 

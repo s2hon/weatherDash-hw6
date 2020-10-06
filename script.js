@@ -3,15 +3,15 @@ var today = moment();
 $('.todayDate').text(today.format("MMM Do YYYY"));
 
 //5 day Forecast
-//add = 1;
-// var tomorrow = moment().add(add, 'days').calendar();  
-// $('.todayDate').text(today.format("MMM Do YYYY"));
+var add = 1;
+var tomorrow = moment().add(add, 'days').calendar();  
+$('.todayDate').text(today.format("MMM Do YYYY"));
 
 //defailt unit
 var city = 'Austin';
 var units = 'imperial';
 var unitSym = '°F';
-var windSym = 'mi/hr';
+var windSym = 'MPH';
 weather();
 
 $('.unitBtn').on('click', function() {
@@ -19,13 +19,13 @@ $('.unitBtn').on('click', function() {
     units = 'metric';
     $('.unitBtn').text('Metric');
     unitSym = '°C'
-    windSym = 'm/s'
+    windSym = 'm/s²'
     weather();
   }
   else {
     units = 'imperial';
     unitSym = '°F';
-    windSym = 'mi/hr';
+    windSym = 'MPH';
     $('.unitBtn').text('Imperial');
     weather();
   }
@@ -38,14 +38,11 @@ $('.list-group-item').on('click', function(){
 
 //default
 function weather() {
-
-    // city = ;
-
-    $('.currentCity').text(city);
+    //delcare city
+    $('.currentCity').text(city)
 
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q="+ city +"&APPID=2864aec1e6fe0dd5f0a41878fb56f375&units=" + units;
-
-// Creating an AJAX call
+    // Creating an AJAX call
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -64,13 +61,30 @@ function weather() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
-        console.log(response);})
-    })
-}
-        // var icon = $("<img>");
-        // var iconcode = response.weather[0].icon;
-        // console.log(iconcode);
-        // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-        // icon.attr("src",iconurl);
+            var uvI = response.value
+            $('#currentUV').text(uvI);
 
-        // $('#icon').append(icon);
+            if (uvI<=1.99){
+                $('#currentUV').addClass('badge-primary')
+            }
+            else if (uvI>2 && uvI<=5.99){
+                $('#currentUV').addClass('badge-success')
+            }
+            else if (uvI>5.99 && uvI<=7.99){
+                $('#currentUV').addClass('badge-warning')
+            }
+            else if (uvI>7.99 && uvI<=10.99){
+                $('#currentUV').addClass('badge-danger')
+            }
+            else if (uvI>10.99 && uvI<=11.99){
+                $('#currentUV').addClass('badge-dark')
+            }
+        });
+
+        var iconcode = response.weather[0].icon;
+        console.log(iconcode);
+        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        $('#mainIcon').attr("src",iconurl);
+    })
+    };
+
