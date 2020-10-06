@@ -45,13 +45,19 @@ left {
     width: 100%;
 }
 
+.fiveTitle {
+    display: block;
+}
+
+.fiveCard {
+    align-content: center;
+}
+
 card {
     color: #010D26;
     background-color: whitesmoke !important;
-}
-
-card-text {
-    font-size: xx-small;
+    min-width: 11rem; 
+    max-width: 11rem;
 }
 
 .list-group-item {

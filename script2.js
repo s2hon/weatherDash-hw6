@@ -1,15 +1,16 @@
 $(document).ready(function(){
     //current date
     var today = moment();
-    $('.todayDate').text(today.format("MMM Do YYYY"));
+    $('.todayDate').text(today.format("dddd, MMM Do YYYY"));
 
-    //5 day dates
-    var i=1;
-    var show = moment().add(1, 'days').calendar();
-        var date = $(document).find('[data-index='+i+']');
-        date.find('.date').text(show.format("MMM Do YYYY"));
-    
-    
+    //+5 dates
+    var j=1;
+    for (j=1; j<6; j++){
+        var future = moment().add(j, 'd')
+        var section = $(document).find('[data-index='+j+']');
+        section.find('.date').text(future.format('MMM Do'));
+    };
+
     //defailt unit
     var city = 'Austin';
     var units = 'imperial';
@@ -38,6 +39,17 @@ $(document).ready(function(){
         city = $(this).text();
         weather();
     });
+
+    //search city
+    $('.searchBtn').on('click', function(){
+        var searchCity = $('#citySearch').val();
+        city = searchCity;
+        weather();  
+    });
+
+    //searched cities
+    var searched = [];
+
     
     //default
     function weather() {
