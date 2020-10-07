@@ -58,11 +58,19 @@ $(document).ready(function(){
         });
     });
     
-        //searched city return
-        $(document).on('click', '.stretched-link', function(){
-            city = $(this).attr('id');
-            weather();
-        });
+    //searched city return
+    $(document).on('click', '.stretched-link', function(){
+        city = $(this).attr('id');
+        weather();
+    });
+
+    //delete searched cities
+    $(document).on('click', '#clear', function(){
+        window.localStorage.removeItem("searched");
+        window.location.reload();
+        searched = [];
+        $(".searchedList").empty();
+    });
         
         //retrieve stored user inputs from local storage and populate
         function renderWeather() {
@@ -140,10 +148,5 @@ $(document).ready(function(){
 
         })
     };
-    //delete searched cities
-    $(document).on('click', '#clear', function(){
-        searched = [];
-        searchedList.empty();
-    });
 });
     
