@@ -16,8 +16,11 @@ $(document).ready(function(){
     var units = 'imperial';
     var unitSym = '°F';
     var windSym = 'MPH';
+    var searched = [];
+    var list = 0;
     weather();
     
+    //units
     $('.unitBtn').on('click', function() {
       if ($('.unitBtn').text().toLowerCase() === "imperial") {
         units = 'metric';
@@ -34,36 +37,64 @@ $(document).ready(function(){
         weather();
       }
     });
-    
-    $('.list-group-item').on('click', function(){
-        city = $(this).text();
-        weather();
-    });
 
     //search city
     $('.searchBtn').on('click', function(){
-        var searchCity = $('#citySearch').val();
-        city = searchCity;
-        weather();  
+        if (searchCity !== ""){
+            city = $('#citySearch').val();
+            var searchCity = $('#citySearch').val();
+            searchCity = searchCity.trim().toLowerCase();
+            searched.push(searchCity);
+            localStorage.setItem("searched", JSON.stringify(searched)); 
+            $('#citySearch').val('');
+            weather();
+        };
+        //list cannot be longer than 8
+        var max = 8;
+        $('ul').each(function(){
+            $(this).find('li').each(function(index){
+            if(index >= max) $(this).remove
+            });
+        });
     });
-
-    //searched cities
-    var searched = [];
-
     
+        //searched city return
+        $(document).on('click', '.stretched-link', function(){
+            city = $(this).attr('id');
+            weather();
+        });
+        
+        //retrieve stored user inputs from local storage and populate
+        function renderWeather() {
+            $(".searchedList").empty();
+            $('.searchedList').append('<li class="list-group-item" id="clear"><a href="#" class="stretched-link">Clear History</a><i class="far fa-trash-alt trashBtn"></i></li>');
+
+            let searched = JSON.parse(localStorage.getItem("searched"));
+                if (searched === null) {
+                    searched = [];
+                };
+                if (searched.length !== null) {
+                    for (var i = 0; i < searched.length; i++){
+                        $('.searchedList').prepend('<li class="list-group-item"><a href="#" class="stretched-link" index="'+i+'"id="'+searched[i]+'">'+searched[i]+'</a></li>');
+                    }
+                };
+        };
+
     //default
     function weather() {
+        renderWeather();
         //delcare city
         $('.currentCity').text(city)
     
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=2864aec1e6fe0dd5f0a41878fb56f375&units=" + units;
-    
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&cnt=7&APPID=2864aec1e6fe0dd5f0a41878fb56f375&units=" + units;
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+
             var start = 0;
-            console.log(response);
+
             //for loop to show 6 days worth of weather
             for (start=0; start<6; start++) {
                 var section = $(document).find('[data-index='+start+']');
@@ -72,6 +103,7 @@ $(document).ready(function(){
                     
                 var iconcode = response.list[start].weather[0].icon;
                 var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
+
                 section.find('.icon').attr("src",iconurl);
             };
 
@@ -108,5 +140,10 @@ $(document).ready(function(){
 
         })
     };
+    //delete searched cities
+    $(document).on('click', '#clear', function(){
+        searched = [];
+        searchedList.empty();
+    });
 });
     

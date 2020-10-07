@@ -29,21 +29,16 @@
                 <div class="row searchBar">
                     <h5>Search for a City:</h5>
                     <input id="citySearch" type="text" placeholder="Seoul">
+                    </br>
                     <button class="searchBtn btn btn-primary" type="search">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
 
-                <div class="row card cityList" style="width: 15rem;">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span href="#" class="stretched-link">Austin</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">Chicago</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">New York</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">Orlando</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">San Francisco</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">Seattle</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">Denver</span></li>
-                        <li class="list-group-item"><span href="#" class="stretched-link">Atlanta</span></li>
+                <div class="row card cityList" style="width: 15rem; margin-left: 0;">
+                    <ul class="list-group list-group-flush searchedList">
+
+
                     </ul>
                 </div>
             </div>
@@ -52,9 +47,9 @@
                 <h3 class="row display-4 todayDate">Date</h3>
                 <div class="row">
                     <div class="jumbotron jumbotron-fluid">
-                        <div class="container" data-index="0">
+                        <div class="container container-fluid" data-index="0">
                             <span class="display-4 currentCity">City</span>
-                            <img class="icon">
+                            <img class="icon" style="float: left;">
                             </br>
                             <span class="lead">Temperature: <span class="temp"></span></span>
                             </br>
@@ -68,64 +63,65 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12 col-xs-12 col-sm-12">
-                <div class="row fiveTitle">
-                    <h3>5-Day Forecast:</h3>
-                </div>
-    
-                <div class="row fiveCard">
-                    <div class="card" data-index="1">
-                        <div class="card-header date">Date</div>
-                        <div class="card-body">
-                            <img class="icon">
-                            </br>
-                            <span class="card-text">Temp: <p class="temp"></p></span>
-                            <span class="card-text">Humidity: <p class="humid"></p></span>
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                        <div class="row fiveTitle">
+                            <h3>5-Day Forecast</h3>
                         </div>
-                    </div>
-    
-                    <div class="card" data-index="2">
-                        <div class="card-header date">Date</div>
-                        <div class="card-body">
-                            <img class="icon">
-                            </br>
-                            <span class="card-text">Temp: <p class="temp"></p></span>
-                            <span class="card-text">Humidity: <p class="humid"></p></span>
+            
+                        <div class="row fiveCard">
+                            <div class="card" data-index="1">
+                                <div class="card-header date">Date</div>
+                                <div class="card-body">
+                                    <img class="icon">
+                                    </br>
+                                    <span class="card-text">Temp: <p class="temp"></p></span>
+                                    <span class="card-text">Humidity: <p class="humid"></p></span>
+                                </div>
+                            </div>
+            
+                            <div class="card" data-index="2">
+                                <div class="card-header date">Date</div>
+                                <div class="card-body">
+                                    <img class="icon">
+                                    </br>
+                                    <span class="card-text">Temp: <p class="temp"></p></span>
+                                    <span class="card-text">Humidity: <p class="humid"></p></span>
+                                </div>
+                            </div>
+            
+                            <div class="card" data-index="3">
+                                <div class="card-header date">Date</div>
+                                <div class="card-body">
+                                    <img class="icon">
+                                    </br>
+                                    <span class="card-text">Temp: <p class="temp"></p></span>
+                                    <span class="card-text">Humidity: <p class="humid"></p></span>
+                                </div>
+                            </div>
+                                
+                            <div class="card" data-index="4">
+                                <div class="card-header date">Date</div>
+                                <div class="card-body">
+                                    <img class="icon">
+                                    </br>
+                                    <span class="card-text">Temp: <p class="temp"></p></span>
+                                    <span class="card-text">Humidity: <p class="humid"></p></span>
+                                </div>
+                            </div>
+            
+                            <div class="card" data-index="5">
+                                <div class="card-header date">Date</div>
+                                <div class="card-body">
+                                    <img class="icon">
+                                    </br>
+                                    <span class="card-text">Temp: <p class="temp"></p></span>
+                                    <span class="card-text">Humidity: <p class="humid"></p></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-    
-                    <div class="card" data-index="3">
-                        <div class="card-header date">Date</div>
-                        <div class="card-body">
-                            <img class="icon">
-                            </br>
-                            <span class="card-text">Temp: <p class="temp"></p></span>
-                            <span class="card-text">Humidity: <p class="humid"></p></span>
-                        </div>
-                    </div>
-                        
-                    <div class="card" data-index="4">
-                        <div class="card-header date">Date</div>
-                        <div class="card-body">
-                            <img class="icon">
-                            </br>
-                            <span class="card-text">Temp: <p class="temp"></p></span>
-                            <span class="card-text">Humidity: <p class="humid"></p></span>
-                        </div>
-                    </div>
-    
-                    <div class="card" data-index="5">
-                        <div class="card-header date">Date</div>
-                        <div class="card-body">
-                            <img class="icon">
-                            </br>
-                            <span class="card-text">Temp: <p class="temp"></p></span>
-                            <span class="card-text">Humidity: <p class="humid"></p></span>
-                        </div>
+
                     </div>
                 </div>
             </div>
