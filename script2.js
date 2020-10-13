@@ -94,7 +94,7 @@ $(document).ready(function(){
         //delcare city
         $('.currentCity').text(city)
     
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&cnt=7&APPID=2864aec1e6fe0dd5f0a41878fb56f375&units=" + units;
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&cnt=7&APPID=&units=" + units;
 
         $.ajax({
             url: queryURL,
